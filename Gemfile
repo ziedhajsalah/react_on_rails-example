@@ -15,8 +15,9 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # react_on_rails gem
-gem 'react_on_rails'
-
+gem 'react_on_rails', '~>6'
+# Usr materialize-css as the UI framework
+gem 'materialize-sass'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -45,3 +46,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby

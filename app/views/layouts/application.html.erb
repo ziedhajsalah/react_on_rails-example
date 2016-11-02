@@ -10,6 +10,24 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="right">
+        <% if user_signed_in? %>
+          welcome <%= current_user.email %>
+          <%= link_to "logout", destroy_user_session_path, method: 'DELETE' %>
+        <% else %>
+          please 
+          <%= link_to "login", new_user_session_path %>
+          or
+          <%= link_to "signup", new_user_registration_path %>
+        <% end %>
+      </div>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      
+      <%= yield %>
+   
+    </div>
   </body>
 </html>

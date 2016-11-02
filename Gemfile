@@ -14,6 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Use Devise to handle authentication
+gem 'devise'
 # react_on_rails gem
 gem 'react_on_rails', '~>6'
 # Usr materialize-css as the UI framework

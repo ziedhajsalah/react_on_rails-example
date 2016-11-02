@@ -32,7 +32,7 @@ class App extends React.Component {
   }
   render () {
     return (
-      <div className='container'>
+      <div>
         <TweetBox sendTweet={this.addTweet} />
         <TweetsList tweets={this.state.tweets} />
       </div>

@@ -1,14 +1,28 @@
 import React from 'react'
 
 class TweetBox extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.sendTweet = this.sendTweet.bind(this)
+  }
+  sendTweet (e) {
+    e.preventDefault()
+    this.props.sendTweet(this.refs.tweetTextArea.value)
+    this.refs.tweetTextArea.value = ''
+  }
   render () {
     return (
       <div className='row'>
-        <form className='col s12'>
+        <form className='col s12' onSubmit={this.sendTweet}>
           <div className='input-field col s12'>
-            <textarea id='tweet-textarea' className='materialize-textarea' />
+            <textarea
+              id='tweet-textarea'
+              className='materialize-textarea'
+              ref='tweetTextArea'
+            />
             <label htmlFor='tweet-textarea'>What's happening</label>
-            <button className='btn rigth'>Tweet</button>
+            <button type='submit' className='btn right'>Tweet</button>
           </div>
         </form>
       </div>

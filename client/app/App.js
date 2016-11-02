@@ -4,7 +4,7 @@ import ReactOnRails from 'react-on-rails'
 import TweetBox from './components/TweetBox'
 
 const App = (props) => (
-  <div>
+  <div className='container'>
     <TweetBox />
   </div>
 )

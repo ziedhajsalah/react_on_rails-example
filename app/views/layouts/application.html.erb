@@ -13,7 +13,7 @@
     <div class="container">
       <div class="right">
         <% if user_signed_in? %>
-          welcome <%= current_user.email %>
+          welcome <%= link_to current_user.display_name, '/profile' %>
           <%= link_to "logout", destroy_user_session_path, method: 'DELETE' %>
         <% else %>
           please 

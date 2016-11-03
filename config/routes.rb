@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tweets
   get 'profile' => 'profile#index' # show the profile page
   patch 'profile' => 'profile#update' # update the profile
 

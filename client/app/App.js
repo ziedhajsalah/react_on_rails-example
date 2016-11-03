@@ -1,3 +1,4 @@
+/* global $ */
 import React from 'react'
 import ReactOnRails from 'react-on-rails'
 
@@ -14,21 +15,18 @@ class App extends React.Component {
     this.addTweet = this.addTweet.bind(this)
   }
   addTweet (tweet) {
-    let ids = this.state.tweets.map(tweet => parseInt(tweet.id))
-    let id = ids.reduce((p, n) => {
-      if (n > p) return n
-      return p
-    }, 0)
-
-    let newTweet = {
-      id: (id + 1).toString(),
-      name: 'Zied Haj Salah',
-      body: tweet
-    }
-
-    let tweets = this.state.tweets
-    tweets.push(newTweet)
-    this.setState({ tweets })
+    $.post('/tweets', { tweet })
+      .success(addedTweet => {
+        let tweets = this.state.tweets
+        tweets.unshift(addedTweet)
+        this.setState({ tweets })
+      })
+      .error(error => console.log(error))
+  }
+  componentDidMount () {
+    $.ajax('/tweets')
+      .success(data => this.setState({tweets: data}))
+      .error(error => console.log(error))
   }
   render () {
     return (

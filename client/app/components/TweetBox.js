@@ -1,5 +1,7 @@
 import React from 'react'
 
+import TweetActions from '../actions/TweetActions'
+
 class TweetBox extends React.Component {
   constructor (props) {
     super(props)
@@ -8,7 +10,7 @@ class TweetBox extends React.Component {
   }
   sendTweet (e) {
     e.preventDefault()
-    this.props.sendTweet(this.refs.tweetTextArea.value)
+    TweetActions.sendTweet(this.refs.tweetTextArea.value)
     this.refs.tweetTextArea.value = ''
   }
   render () {

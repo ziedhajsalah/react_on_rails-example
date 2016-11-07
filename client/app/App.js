@@ -1,43 +1,16 @@
 import React from 'react'
+import { Router, Route, hashHistory } from 'react-router'
 import ReactOnRails from 'react-on-rails'
 
-import TweetBox from './components/TweetBox'
-import TweetsList from './components/TweetsList'
+import Index from './components/Index'
+import Follow from './components/Follow'
 
-import TweetStore from './stores/TweetStore'
-import TweetActions from './actions/TweetActions'
-
-let getAppState = () => {
-  return { tweets: TweetStore.getAll() }
-}
-
-class App extends React.Component {
-  constructor () {
-    super()
-
-    this.state = { tweets: [] }
-    this._onChange = this._onChange.bind(this)
-  }
-  componentDidMount () {
-    TweetActions.getAllTweets()
-    this.setState(getAppState())
-    TweetStore.addChangeListener(this._onChange)
-  }
-  componentWillUnmount () {
-    TweetStore.removeChangeListener(this._onChange)
-  }
-  _onChange () {
-    this.setState(getAppState())
-  }
-  render () {
-    return (
-      <div>
-        <TweetBox />
-        <TweetsList tweets={this.state.tweets} />
-      </div>
-    )
-  }
-}
+const App = () => (
+  <Router history={hashHistory}>
+    <Route path='/' component={Index} />
+    <Route path='/follow' component={Follow} />
+  </Router>
+)
 
 ReactOnRails.register({ App })
 

@@ -6,7 +6,6 @@ import TweetsList from './components/TweetsList'
 
 import TweetStore from './stores/TweetStore'
 import TweetActions from './actions/TweetActions'
-TweetActions.getAllTweets()
 
 let getAppState = () => {
   return { tweets: TweetStore.getAll() }
@@ -16,10 +15,12 @@ class App extends React.Component {
   constructor () {
     super()
 
-    this.state = getAppState()
+    this.state = { tweets: [] }
     this._onChange = this._onChange.bind(this)
   }
   componentDidMount () {
+    TweetActions.getAllTweets()
+    this.setState(getAppState())
     TweetStore.addChangeListener(this._onChange)
   }
   componentWillUnmount () {

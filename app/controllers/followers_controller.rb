@@ -1,4 +1,7 @@
 class FollowersController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
+
   def random
     render json: User.where(['id != ?', current_user.id])
                      .order('random()')

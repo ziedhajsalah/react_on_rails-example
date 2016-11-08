@@ -1,9 +1,9 @@
 import React from 'react'
-import md5 from 'js-md5'
 import { Link } from 'react-router'
 
 import UserStore from '../stores/UserStore'
 import UserActions from '../actions/UserActions'
+import UserBox from './UserBox'
 
 const getAppState = () => {
   return { users: UserStore.getAll() }
@@ -29,18 +29,7 @@ export default class Follow extends React.Component {
   }
   render () {
     const users = this.state.users.map(user => {
-      const gravatar = user.email
-        ? 'http://www.gravatar.com/avatar/' + md5(user.email)
-        : ''
-      const displayUser = user.first_name || user.last_name
-        ? user.first_name + ' ' + user.last_name
-        : user.email
-      return (
-        <li key={user.id} className='collection-item avatar'>
-          <img src={gravatar} className='circle' />
-          <span className='title'>{displayUser}</span>
-        </li>
-      )
+      return <UserBox key={user.id} user={user} />
     })
     return (
       <div>

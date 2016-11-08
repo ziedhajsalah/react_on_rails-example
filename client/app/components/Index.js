@@ -20,7 +20,6 @@ class Index extends React.Component {
   }
   componentDidMount () {
     TweetActions.getAllTweets()
-    this.setState(getAppState())
     TweetStore.addChangeListener(this._onChange)
   }
   componentWillUnmount () {

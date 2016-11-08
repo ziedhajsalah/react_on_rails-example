@@ -1,19 +1,11 @@
 import AppDispatcher from '../dispatcher'
-import { EventEmitter } from 'events'
+import AppEventEmitter from './AppEventEmitter'
 
 let _tweets = []
-class TweetEventEmitter extends EventEmitter {
+
+class TweetEventEmitter extends AppEventEmitter {
   getAll () {
     return _tweets
-  }
-  emitChange () {
-    this.emit('CHANGE')
-  }
-  addChangeListener (cb) {
-    this.on('CHANGE', cb)
-  }
-  removeChangeListener (cb) {
-    this.removeListener('CHANGE', cb)
   }
 }
 
